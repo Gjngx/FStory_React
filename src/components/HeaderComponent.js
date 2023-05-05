@@ -17,7 +17,7 @@ import { Link } from "react-router-dom"
 
 
 
-const pages = ["tacgia", "theloai", "truyen", "user", "admin"];
+const pages = ["Tác giả", "Thể loại", "Truyện", "User", "Admin"];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 

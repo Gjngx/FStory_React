@@ -1,55 +1,53 @@
 import React, { useState, useEffect } from 'react'
-import TacGiaService from '../../services/TacGiaService';
+import TheLoaiService from '../../services/TheLoaiService';
 import{useNavigate, useParams, Link} from 'react-router-dom'
 
 
-function AddTacGiaComponent() {
-  const[tacgia, setTacGia] = useState('')
+function AddTheLoaiComponent() {
+  const[theloai, setTheLoai] = useState('')
   const[tieude, setTieuDe] = useState('')
   const navigate = useNavigate();
   const {id} = useParams();
 
 
-  const saveOrupdateTacGia = (e) => {
+  const saveOrupdateTheLoai = (e) => {
     e.preventDefault();
-    const TacGia = {tacgia, tieude}
+    const TheLoai = {theloai, tieude}
 
     if(id){
-      TacGiaService.updatetacgia(id,TacGia).then((response) => {
+        TheLoaiService.updatetheloai(id,TheLoai).then((response) => {
         console.log(response.data)
-        navigate('/tacgia');
+        navigate('/thể loại');
       }).catch(error => {
-        alert("Tên tác giả hoặc tiêu đề đã tồn tại!");
+        alert("Tên thể loại hoặc tiêu đề đã tồn tại!");
         console.log(error);
       })
     }else{
-      TacGiaService.createtacgia(TacGia).then((response) => {
+        TheLoaiService.createtheloai(TheLoai).then((response) => {
         console.log(response.data)
-        navigate('/tacgia');
+        navigate('/thể loại');
       }).catch(error => {
-        alert("Tên tác giả hoặc tiêu đề đã tồn tại!");
+        alert("Tên thể loại hoặc tiêu đề đã tồn tại!");
         console.log(error);
       })
     }
   }
 
   useEffect(() => {
-    TacGiaService.gettacgiaById(id).then((response) => {
+    TheLoaiService.gettheloaiById(id).then((response) => {
       console.log(response.data)
-      setTacGia(response.data.data.tacgia)
+      setTheLoai(response.data.data.theloai)
       setTieuDe(response.data.data.tieude)
-      console.log(response.data.data.tacgia)
-      console.log(response.data.data.tieude)
     }).catch(error =>{
-      console.log(error)
+      console.log(error);
     })
   },[id])
 
   const title = () => {
     if(id){
-      return <h2 className="text-center">Cập nhật tác giả</h2>
+      return <h2 className="text-center">Cập nhật thể loại</h2>
     }else{
-      return <h2 className="text-center">Thêm tác giả</h2>
+      return <h2 className="text-center">Thêm thể loại</h2>
     }
   }
 
@@ -66,14 +64,14 @@ function AddTacGiaComponent() {
             <div className="card-body">
               <form>
                 <div className="form-group mb-2">
-                  <label className="form-label">Tên tác giả: </label>
+                  <label className="form-label">Tên thể loại: </label>
                   <input
                     type = "text"
-                    placeholder="Nhập tên tác giả"
+                    placeholder="Nhập tên thể loại"
                     name = "Tên tác giả"
                     className="form-control"
-                    value={tacgia}
-                    onChange={(e) => setTacGia(e.target.value)}
+                    value={theloai}
+                    onChange={(e) => setTheLoai(e.target.value)}
                   ></input>
                 </div>
 
@@ -88,8 +86,8 @@ function AddTacGiaComponent() {
                     onChange={(e) => setTieuDe(e.target.value)}
                   ></input>
                 </div>
-                <Link style={{textDecoration: "none"}} to = "tacgia" className="btn btn-danger float-right margin-2">Hủy</Link>
-                <button className="btn btn-success float-right margin-2" onClick={(e) => saveOrupdateTacGia(e)}>Thực hiện</button>
+                <Link style={{textDecoration: "none"}} to = "/thể loại" className="btn btn-danger float-right margin-2">Hủy</Link>
+                <button className="btn btn-success float-right margin-2" onClick={(e) => saveOrupdateTheLoai(e)}>Thực hiện</button>
               </form>
             </div>
           </div>
@@ -99,4 +97,4 @@ function AddTacGiaComponent() {
   )
 }
 
-export default AddTacGiaComponent
+export default AddTheLoaiComponent
