@@ -9,6 +9,8 @@ import AddTacGiaComponent from './components/tacgiacomponents/AddTacGiaComponent
 import ListTheLoaiComponent from './components/theloaicomponents/ListTheLoaiComponent';
 import AddTheLoaiComponent from './components/theloaicomponents/AddTheLoaiComponent';
 
+import ListTruyenComponent from './components/truyencomponents/ListTruyenComponent';
+
 
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
             <Route path = "/thể loại" element = {<ListTheLoaiComponent/>}></Route>
             <Route path = "/addtheloai" element = {<AddTheLoaiComponent/>}></Route>
             <Route path = "/edit-theloai/:id" element = {<AddTheLoaiComponent/>}></Route>
+            <Route path = "/truyện" element = {<ListTruyenComponent/>}></Route>
           </Routes>
         </div>
         <FooterComponent/>
