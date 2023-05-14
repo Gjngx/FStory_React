@@ -7,16 +7,19 @@ class TruyenService{
     getAlltruyen(){
         return axios.get(TRUYEN_BASE_REST_API_URL)
     }
-    createtheloai(truyen){
-        return axios.post(TRUYEN_BASE_REST_API_URL,truyen)
+    getAlltruyenSortDesc(){
+        return axios.get(TRUYEN_BASE_REST_API_URL+'/desc?field=ngaydang')
     }
-    gettheloaiById(id_truyen){
+    createtruyen(truyen){
+        return axios.post(TRUYEN_BASE_REST_API_URL+'/insert',truyen)
+    }
+    gettruyenById(id_truyen){
         return axios.get(TRUYEN_BASE_REST_API_URL+'/'+id_truyen)
     }
-    updatetheloai(id_truyen,truyen){
+    updatetruyen(id_truyen,truyen){
         return axios.put(TRUYEN_BASE_REST_API_URL+'/'+id_truyen,truyen)
     }
-    deletetheloai(id_truyen){
+    deletetruyen(id_truyen){
         return axios.delete(TRUYEN_BASE_REST_API_URL+'/'+id_truyen)
     }
 

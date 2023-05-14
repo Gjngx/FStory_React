@@ -17,7 +17,7 @@ function AddTacGiaComponent() {
     if(id){
       TacGiaService.updatetacgia(id,TacGia).then((response) => {
         console.log(response.data)
-        navigate('/tacgia');
+        navigate('/tác giả');
       }).catch(error => {
         alert("Tên tác giả hoặc tiêu đề đã tồn tại!");
         console.log(error);
@@ -25,7 +25,7 @@ function AddTacGiaComponent() {
     }else{
       TacGiaService.createtacgia(TacGia).then((response) => {
         console.log(response.data)
-        navigate('/tacgia');
+        navigate('/tác giả');
       }).catch(error => {
         alert("Tên tác giả hoặc tiêu đề đã tồn tại!");
         console.log(error);

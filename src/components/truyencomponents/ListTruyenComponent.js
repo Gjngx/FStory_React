@@ -7,12 +7,12 @@ const ListTruyenComponent = () => {
     const [Truyen, setTruyen] = useState([])
   
     useEffect(() => {
-        getAlltruyen();
+        getAlltruyenSortDesc();
     }, [])
 
-    const getAlltruyen = () =>
+    const getAlltruyenSortDesc = () =>
     {
-        TruyenService.getAlltruyen().then((response) => {
+        TruyenService.getAlltruyenSortDesc().then((response) => {
             setTruyen(response.data)
             console.log(response.data);
         }).catch(error => {
@@ -22,7 +22,7 @@ const ListTruyenComponent = () => {
 
     const deleteTruyen = (id_truyen) =>(
         TruyenService.deletetruyen(id_truyen).then((response) => {
-            getAlltruyen();
+            getAlltruyenSortDesc();
             console.log(response.data);
         }).catch(error => {
             console.log(error);
@@ -44,6 +44,7 @@ const ListTruyenComponent = () => {
                     <th>Tác giả</th>
                     <th>Thể loại</th>
                     <th>Giới thiệu</th>
+                    <th>Ngày đăng</th>
                     <th>Actions</th>
                 </thead>
                 <tbody>
@@ -52,23 +53,25 @@ const ListTruyenComponent = () => {
                             truyen => 
                             <tr key = {truyen.id}>
                                 <td>{truyen.id}</td>
-                                <td>{truyen.anhtruyen}</td>
+                                <td><img style={{width: "129px", height: "192px"}} src={truyen.anhtruyen} alt= {truyen.tentruyen} /></td>
                                 <td>{truyen.tentruyen}</td>
                                 <td>{truyen.tieude}</td>
                                 <td>{truyen.trangthai.trangthai}</td>
                                 <td>{truyen.tacgia.tacgia}</td>
                                 <td>{truyen.theloai.theloai}</td>
                                 <td>{truyen.gioithieu}</td>
+                                <td>{truyen.ngaydang}</td>
                                 <td>
                                     <Link className="btn btn-info" style={{textDecoration: "none"}} to = {`/edit-truyen/${truyen.id}`}>Update</Link>
                                     <button className="btn btn-danger"  onClick={() => deleteTruyen(truyen.id)} style={{margin: "1%"}}>Delete</button>
+                                    <Link className="btn btn-success" style={{textDecoration: "none"}} to = {`/chuong/${truyen.id}`}>DS chương</Link>
                                 </td>
                             </tr>
                         )
                     }
                 </tbody>
             </table>
-            <Link style={{textDecoration: "none"}} to = "/addttruyen" className="btn btn-primary mb-2 float-right " >Thêm truyện</Link>
+            <Link style={{textDecoration: "none"}} to = "/addtruyen" className="btn btn-primary mb-2 float-right " >Thêm truyện</Link>
     </div>
   )
 }

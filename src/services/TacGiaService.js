@@ -8,7 +8,7 @@ class TacGiaService{
         return axios.get(TACGIA_BASE_REST_API_URL)
     }
     createtacgia(tacgia){
-        return axios.post(TACGIA_BASE_REST_API_URL,tacgia)
+        return axios.post(TACGIA_BASE_REST_API_URL+'/insert',tacgia)
     }
     gettacgiaById(id_tacgia){
         return axios.get(TACGIA_BASE_REST_API_URL+'/'+id_tacgia)
