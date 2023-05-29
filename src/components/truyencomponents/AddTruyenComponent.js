@@ -17,21 +17,21 @@ function AddTruyenComponent() {
     const [listtrangthai, setListTrangThai] = useState([])
 
     const fetchTacGias = async () => {
-      const { data } = await Axios.get('http://localhost:8080/api/v1/tacgia');
+      const { data } = await Axios.get('http://localhost:8081/api/v1/tacgia');
       const tacgias = data;
       setListTacGia(tacgias);
       console.log(tacgias);
     };
   
     const fetchTheLoais = async () => {
-      const { data } = await Axios.get('http://localhost:8080/api/v1/theloai');
+      const { data } = await Axios.get('http://localhost:8081/api/v1/theloai');
       const theloais = data;
       setListTheLoai(theloais);
       console.log(theloais);
     };
 
     const fetchTrangThais = async () => {
-      const { data } = await Axios.get('http://localhost:8080/api/v1/trangthai');
+      const { data } = await Axios.get('http://localhost:8081/api/v1/trangthai');
       const trangthais = data;
       setListTrangThai(trangthais);
       console.log(trangthais);
@@ -118,8 +118,7 @@ function AddTruyenComponent() {
                 <div className="form-group mb-2">
                   <label className="form-label">Ảnh truyện (215X325): </label>
                   <input
-                    type = "text"
-                    placeholder="Nhập link ảnh truyện (215X325)"
+                    type = "file"
                     name = "Ảnh truyện"
                     className="form-control"
                     value={anhtruyen}
@@ -143,7 +142,8 @@ function AddTruyenComponent() {
                   <label className="form-label">Tác giả: </label>
                   <select class="form-select" 
                           aria-label="Default select example"
-                          value={tacgia} onChange={(e) => setTacGia(e.target.value)}>
+                          value={tacgia} 
+                          onChange={(e) => setTacGia(e.target.value)}>
                             {listtacgia.map(tacGia => (
                               <option key={tacGia.id} value={tacGia.id}>{tacGia.tacgia}</option>
                             ))}
@@ -154,7 +154,8 @@ function AddTruyenComponent() {
                   <label className="form-label">Thể loại: </label>
                   <select class="form-select" 
                           aria-label="Default select example"
-                          value={theloai} onChange={(e) => setTheLoai(e.target.value)}>
+                          value={theloai} 
+                          onChange={(e) => setTheLoai(e.target.value)}>
                             {listtheloai.map(theLoai => (
                               <option key={theLoai.id} value={theLoai.id}>{theLoai.theloai}</option>
                             ))}
@@ -165,7 +166,8 @@ function AddTruyenComponent() {
                   <label className="form-label">Trạng thái: </label>
                   <select class="form-select" 
                           aria-label="Default select example"
-                          value={trangthai} onChange={(e) => setTrangThai(e.target.value)}>
+                          value={trangthai} 
+                          onChange={(e) => setTrangThai(e.target.value)}>
                             {listtrangthai.map(trangThai => (
                               <option key={trangThai.id} value={trangThai.id}>{trangThai.trangthai}</option>
                             ))}

@@ -16,8 +16,6 @@ import ListChuongComponent from './components/chuongcomponents/ListChuongCompone
 import AddChuongComponent from './components/chuongcomponents/AddChuongComponent';
 
 
-
-
 function App() {
 
   return (
@@ -43,8 +41,8 @@ function App() {
             <Route path = "/chuong/:id" element = {<ListChuongComponent/>}></Route>
             <Route path = "/addchuong" element = {<AddChuongComponent/>}></Route>
             <Route path = "/edit-chuong/:id" element = {<AddChuongComponent/>}></Route>
-
           </Routes>
+          
         </div>
         <FooterComponent/>
       </Router>

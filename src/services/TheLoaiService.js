@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const THELOAI_BASE_REST_API_URL = 'http://localhost:8080/api/v1/theloai';
+const THELOAI_BASE_REST_API_URL = 'http://localhost:8081/api/v1/theloai';
 
 class TheLoaiService{
 

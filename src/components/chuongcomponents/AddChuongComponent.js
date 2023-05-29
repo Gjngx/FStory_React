@@ -18,7 +18,7 @@ function AddChuongComponent() {
     const {id} = useParams();
 
     const fetchTruyens = async () => {
-      const { data } = await Axios.get('http://localhost:8080/api/v1/truyen');
+      const { data } = await Axios.get('http://localhost:8081/api/v1/truyen');
       const truyens = data;
       setListTruyen(truyens);
       console.log(truyens);
