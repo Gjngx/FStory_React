@@ -53,7 +53,7 @@ const ListTruyenComponent = () => {
                             truyen => 
                             <tr key = {truyen.id}>
                                 <td>{truyen.id}</td>
-                                <td><img style={{width: "129px", height: "192px"}} src={truyen.anhtruyen} alt= {truyen.tentruyen} /></td>
+                                <td><img style={{width: "129px", height: "192px"}} src={`http://localhost:8080/api/v1/FileUpload/files/${truyen.anhtruyen}`} alt= {truyen.tentruyen} /></td>
                                 <td>{truyen.tentruyen}</td>
                                 <td>{truyen.tieude}</td>
                                 <td>{truyen.trangthai.trangthai}</td>

@@ -17,21 +17,21 @@ function AddTruyenComponent() {
     const [listtrangthai, setListTrangThai] = useState([])
 
     const fetchTacGias = async () => {
-      const { data } = await Axios.get('http://localhost:8081/api/v1/tacgia');
+      const { data } = await Axios.get('http://localhost:8080/api/v1/tacgia');
       const tacgias = data;
       setListTacGia(tacgias);
       console.log(tacgias);
     };
   
     const fetchTheLoais = async () => {
-      const { data } = await Axios.get('http://localhost:8081/api/v1/theloai');
+      const { data } = await Axios.get('http://localhost:8080/api/v1/theloai');
       const theloais = data;
       setListTheLoai(theloais);
       console.log(theloais);
     };
 
     const fetchTrangThais = async () => {
-      const { data } = await Axios.get('http://localhost:8081/api/v1/trangthai');
+      const { data } = await Axios.get('http://localhost:8080/api/v1/trangthai');
       const trangthais = data;
       setListTrangThai(trangthais);
       console.log(trangthais);
