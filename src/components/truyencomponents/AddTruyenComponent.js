@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import TruyenService from '../../services/TruyenService';
 import{useNavigate, useParams, Link} from 'react-router-dom';
 import Axios from "axios";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AddTruyenComponent() {
     const[tentruyen, setTenTruyen] = useState('')
@@ -64,6 +66,32 @@ function AddTruyenComponent() {
     }
   }
 
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
+  const [fileName, setFileName] = useState('');
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleUpload = () => {
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+
+    fetch('http://your-api-url/upload', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.text())
+      .then(data => {
+        console.log(data);
+        setAnhTruyen(data);
+        setUploadSuccess(true);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
 
   useEffect(() => {
     TruyenService.gettruyenById(id).then((response) => {
@@ -102,6 +130,19 @@ function AddTruyenComponent() {
               title()
             }
             <div className="card-body">
+
+
+            <div>
+              <input type="file" onChange={handleFileChange} />
+              <button onClick={handleUpload}>Tải lên</button>
+              {uploadSuccess && (
+                <p>
+                  Tải lên thành công! Tên tệp: {fileName}
+                </p>
+              )}
+            </div>
+
+
               <form>
                 <div className="form-group mb-2">
                   <label className="form-label">Tên truyện: </label>
