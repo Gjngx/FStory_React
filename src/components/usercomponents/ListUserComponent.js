@@ -34,12 +34,12 @@ const ListUserComponent = () => {
  return (
     <div className="container">
         <br></br>
-        <h2 className="text-center">Danh sách user</h2>
+        <h2 className="text-center">Danh sách người dùng</h2>
         <br></br>
             <table className="table table-bordered table-striped">
                 <thead>
                     <th>Id</th>
-                    <th>Username</th>
+                    <th>Tài khoản</th>
                     <th>Họ tên</th>
                     <th>Ngày sinh</th>
                     <th>Mail</th>

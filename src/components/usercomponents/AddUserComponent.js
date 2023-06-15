@@ -22,7 +22,7 @@ function AddUserComponent() {
         console.log(response.data)
         navigate('/user');
       }).catch(error => {
-        alert("Thêm user lỗi!");
+        alert("Thêm tài khoản người dùng lỗi!");
         console.log(error);
       })
     }
@@ -52,14 +52,14 @@ function AddUserComponent() {
         <div className="row">
           <div className="card col-md-6 offset-md-3">
             <br></br>
-            <h2 className="text-center">Thêm user</h2>
+            <h2 className="text-center">Thêm người dùng</h2>
             <div className="card-body">
               <form>
                 <div className="form-group mb-2">
-                  <label className="form-label">Username: </label>
+                  <label className="form-label">Tài khoản: </label>
                   <input
                     type = "text"
-                    placeholder="Nhập username"
+                    placeholder="Nhập tài khoản"
                     name = "Username"
                     className="form-control"
                     value={username}
@@ -68,10 +68,10 @@ function AddUserComponent() {
                 </div>
 
                 <div className="form-group mb-2">
-                  <label className="form-label">password: </label>
+                  <label className="form-label">Mật khẩu: </label>
                   <input
                     type="password"
-                    placeholder="Nhập password:"
+                    placeholder="Nhập mật khẩu:"
                     name = "Password"
                     className="form-control"
                     value={password}

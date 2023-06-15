@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import TruyenService from '../../services/TruyenService';
 import{useNavigate, useParams, Link} from 'react-router-dom';
 import Axios from "axios";
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function AddTruyenComponent() {
@@ -68,7 +67,6 @@ function AddTruyenComponent() {
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadSuccess, setUploadSuccess] = useState(false);
-  const [fileName, setFileName] = useState('');
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -78,14 +76,14 @@ function AddTruyenComponent() {
     const formData = new FormData();
     formData.append('file', selectedFile);
 
-    fetch('http://your-api-url/upload', {
+    fetch('http://localhost:8080/api/v1/FileUpload?file', {
       method: 'POST',
       body: formData
     })
-      .then(response => response.text())
+      .then(response => response.json())
       .then(data => {
-        console.log(data);
-        setAnhTruyen(data);
+        console.log(data.data);
+        setAnhTruyen(data.data);
         setUploadSuccess(true);
       })
       .catch(error => {
@@ -134,16 +132,16 @@ function AddTruyenComponent() {
 
             <div>
               <input type="file" onChange={handleFileChange} />
-              <button onClick={handleUpload}>Tải lên</button>
+              <button className="btn btn-success float-right" onClick={handleUpload}>Tải lên</button>
               {uploadSuccess && (
                 <p>
-                  Tải lên thành công! Tên tệp: {fileName}
+                  Tải lên thành công! Tên tệp: {anhtruyen}
                 </p>
               )}
             </div>
 
 
-              <form>
+              <form method='POST'>
                 <div className="form-group mb-2">
                   <label className="form-label">Tên truyện: </label>
                   <input
@@ -159,10 +157,12 @@ function AddTruyenComponent() {
                 <div className="form-group mb-2">
                   <label className="form-label">Ảnh truyện (215X325): </label>
                   <input
-                    type = "file"
-                    name = "Ảnh truyện"
+                    type="text"
+                    name="Ảnh truyện"
+                    placeholder="Nhập ảnh truyện"
                     className="form-control"
                     value={anhtruyen}
+                    readOnly
                     onChange={(e) => setAnhTruyen(e.target.value)}
                   ></input>
                 </div>
@@ -184,7 +184,7 @@ function AddTruyenComponent() {
                   <select class="form-select" 
                           aria-label="Default select example"
                           value={tacgia} 
-                          onChange={(e) => setTacGia(e.target.value)}>
+                          onChange={(e) => setTacGia(e.target.options[e.target.selectedIndex].value)}>
                             {listtacgia.map(tacGia => (
                               <option key={tacGia.id} value={tacGia.id}>{tacGia.tacgia}</option>
                             ))}
@@ -196,7 +196,7 @@ function AddTruyenComponent() {
                   <select class="form-select" 
                           aria-label="Default select example"
                           value={theloai} 
-                          onChange={(e) => setTheLoai(e.target.value)}>
+                          onChange={(e) => setTheLoai(e.target.options[e.target.selectedIndex].value)}>
                             {listtheloai.map(theLoai => (
                               <option key={theLoai.id} value={theLoai.id}>{theLoai.theloai}</option>
                             ))}
@@ -208,7 +208,7 @@ function AddTruyenComponent() {
                   <select class="form-select" 
                           aria-label="Default select example"
                           value={trangthai} 
-                          onChange={(e) => setTrangThai(e.target.value)}>
+                          onChange={(e) => setTrangThai(e.target.options[e.target.selectedIndex].value)}>
                             {listtrangthai.map(trangThai => (
                               <option key={trangThai.id} value={trangThai.id}>{trangThai.trangthai}</option>
                             ))}

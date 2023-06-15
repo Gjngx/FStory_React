@@ -19,7 +19,7 @@ function AddAdminComponent() {
         console.log(response.data)
         navigate('/admin');
       }).catch(error => {
-        alert("Thêm admin lỗi!");
+        alert("Thêm tài khoản admin lỗi!");
         console.log(error);
       })
     }
@@ -35,10 +35,10 @@ function AddAdminComponent() {
             <div className="card-body">
               <form>
                 <div className="form-group mb-2">
-                  <label className="form-label">Username: </label>
+                  <label className="form-label">Tài khoản: </label>
                   <input
                     type = "text"
-                    placeholder="Nhập username"
+                    placeholder="Nhập tài khoản"
                     name = "Username"
                     className="form-control"
                     value={username}
@@ -47,10 +47,10 @@ function AddAdminComponent() {
                 </div>
 
                 <div className="form-group mb-2">
-                  <label className="form-label">password: </label>
+                  <label className="form-label">Mật khẩu: </label>
                   <input
                     type="password"
-                    placeholder="Nhập password:"
+                    placeholder="Nhập mật khẩu:"
                     name = "Password"
                     className="form-control"
                     value={password}
