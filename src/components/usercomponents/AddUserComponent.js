@@ -110,7 +110,7 @@ function AddUserComponent() {
                   <label className="form-label">Mail: </label>
                   <input
                     type = "text"
-                    placeholder="Nhập Mail"
+                    placeholder="Nhập mail"
                     name = "Mail"
                     className="form-control"
                     value={mail}
